@@ -1,0 +1,7 @@
+<div>
+    <add-todo (addNewTodo)="todoAddHandler($event)"></add-todo>
+    <ul>
+        <my-todo-item *ngFor="let todo of todos" [todoItem]="todo" (todoDeleted)="todoDeletedHandler($event)">
+        </my-todo-item>
+    </ul>
+</div>

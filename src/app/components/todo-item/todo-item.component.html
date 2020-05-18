@@ -1,0 +1,7 @@
+<li [ngClass]="pickTodoClasses()">
+    <div>
+        <input type="checkbox" (change)="onStatusChangeHandler()" />
+        {{todoItem.title}}
+        <button class="del" (click)="onDeleteHandler()">X</button>
+    </div>
+</li>
