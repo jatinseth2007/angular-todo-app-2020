@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'add-todo',
@@ -8,7 +9,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class AddTodoComponent implements OnInit {
     @Output() addNewTodo: EventEmitter<any> = new EventEmitter();
 
-    title: string;
+    addTodoForm = new FormGroup({
+        title: new FormControl("", [Validators.required])
+    });
 
     constructor() { }
 
@@ -20,10 +23,18 @@ export class AddTodoComponent implements OnInit {
      * Jatin Seth
      */
     createNewTodoHandler(): void {
-        this.addNewTodo.emit({
-            title: this.title,
-            completed: false
-        });
+        if (this.addTodoForm.status === 'VALID') {
+            this.addNewTodo.emit({
+                title: this.addTodoForm.get("title").value,
+                completed: false
+            });
+        }else{
+            alert("errors found in form");
+        }//EOI
+    }
+
+    get title() {
+        return this.addTodoForm.get("title");
     }
 
 }

@@ -1,4 +1,5 @@
-<form class="form" (submit)="createNewTodoHandler()">
-    <input type="text" name="title" [(ngModel)]="title" placeholder="add new todo" />
+<form class="form" (ngSubmit)="$event.preventDefault();createNewTodoHandler()" [formGroup]="addTodoForm" ngNativeValidate>
+    <input type="text" name="title" formControlName="title" placeholder="add new todo" />
+    <span *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">Please provide valid todo title.</span>
     <input type="submit" value="Submit" class="btn" />
 </form>

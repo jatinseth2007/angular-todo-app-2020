@@ -14,7 +14,9 @@ export class TodoService {
         })
     }
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { 
+        console.log("TodoService defined");
+    }
 
     /**
      * Function to fetch all todos
