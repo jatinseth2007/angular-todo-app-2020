@@ -1,0 +1,10 @@
+<div class="container">
+    <form [formGroup]="formlyTestFormGroup" (ngSubmit)="onSubmitHandler()">
+        <formly-form [model]="formlyModel" [fields]="formlyFields" [form]="formlyTestFormGroup"></formly-form>
+        <div class="row">
+            <button type="reset">Clear</button>
+            <button type="submit">Submit</button>
+        </div>
+
+    </form>
+</div>
